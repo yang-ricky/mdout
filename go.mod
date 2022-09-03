@@ -10,4 +10,5 @@ require (
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cobra v0.0.5
 	gitlab.com/golang-commonmark/markdown v0.0.0-20191127184510-91b5b3c99c19
+	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
 )
