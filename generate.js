@@ -64,34 +64,25 @@ function main() {
   files
   .filter(file=>file.includes(".md"))
   .sort((a,b)=> {
-    const aTime = a.split("/").pop().split("$")[0];
-    const bTime = b.split("/").pop().split("$")[0];
+    const aTime = a.split("/").pop().split("@")[0];
+    const bTime = b.split("/").pop().split("@")[0];
     return  parseInt(aTime) - parseInt(bTime);
   })
   .forEach(file => {
     const pdfFileName = file.split("/").pop().replace(".md", ".pdf");
-    //const fileWithSequence = getSequence(number) + "$" + pdfFileName.split("$")[1];
-    const cmd = `mdout ${file} -o ${output}/${pdfFileName}`
-    console.log(cmd)
+    const fileWithSequence = getSequence(number) + "@" + pdfFileName.split("@")[1];
+    const cmd = `mdout ${file} -o ${output}/${fileWithSequence}`
     process.exec(cmd,function (error, stdout, stderr) {
-      console.log("完成了吗？")
       if (error !== null) {
           console.log('exec error: ' + error);
       }
     });
-    wait(8);
+    wait(4);
     number++;
   })
 }
 
-process.exec("mdout input/1582704710@中国供应链到底有多厉害？.md -o ./input/output/1582704710$中国供应链到底有多厉害？.pdf",function (error, stdout, stderr) {
-      console.log("完成了吗？")
-      if (error !== null) {
-              console.log('exec error: ' + error);
-            }
-    });
-
-//main()
+main()
 
 function getSequence(number) {
   if(number<10) {
