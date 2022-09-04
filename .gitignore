@@ -5,3 +5,5 @@ main.exe
 main
 .idea
 release
+input
+node_modules
